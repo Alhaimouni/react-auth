@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+.register {
+  min-height: 750px;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrPAAoFS3Ce6Rnx6cMM-BeiIB1_Ve8OzguBA&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(29,167,187);
+}
+
+.registerCard {
+  width: 60%;
+  height: 600px;
+  /* background-color: rgba(255, 255, 255, 0.752); */
+  border-radius: 20px;
+  /* padding: 20px; */
+  box-shadow: 5px 5px 50px rgb(185, 201, 206);
+  display: flex;
+}
+
+.registerHero {
+  width: 60%;
+  /* background-color: antiquewhite; */
+  background-image: url(https://i.pinimg.com/originals/e9/b6/9c/e9b69c8758b65cbc428632e7ac7f24fc.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.heroTop {
+  /* background-color: rgb(76, 162, 236); */
+  height: 20%;
+  border-top-left-radius: 20px;
+  padding: 40px 0px 0px 20px;
+}
+
+#logo {
+  font-size: xx-large;
+  text-indent: 30px;
+}
+
+.heroMid {
+  /* background-color: rgb(40, 108, 167); */
+  height: 50%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+}
+
+.heroBot {
+  /* background-color: rgb(16, 88, 151); */
+  height: 30%;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.registerForm {
+  width: 40%;
+  background-color: rgb(255, 255, 255);
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#siteName {
+  color: rgb(255, 255, 255);
+  text-indent: 220px;
+}

@@ -15,7 +15,7 @@
   margin: 5px;
   width: 80%;
   border-radius: 5px;
-  border-left: 6px solid rgb(157,208,253);
+  border-left: 6px solid rgb(157, 208, 253);
 }
 
 .inputc {
@@ -24,16 +24,17 @@
   width: 80%;
   height: 80px;
   border-radius: 5px;
-  border-left: 6px solid rgb(157,208,253);
+  border-left: 6px solid rgb(157, 208, 253);
 }
 
 .submit {
   padding: 10px;
   width: 20%;
   margin: 5px;
-  border-radius: 25px;
-  background-color: rgb(157,208,253);
+  border-radius: 5px;
+  background-color: rgb(157, 208, 253);
   color: white;
   border-color: rgb(132, 132, 132);
   margin-top: 20px;
+  box-shadow: 2px 2px 5px black;
 }

@@ -10,7 +10,7 @@ import { dataContext } from '../contexts/DataProvider';
 
 function Main() {
   const { isAuth, setIsAuth } = useContext(authContext);
-  const { posts, getPosts, refresh } = useContext(dataContext);
+  const { posts, getPosts, refreshMain } = useContext(dataContext);
 
   useEffect(() => {
     const token = cookies.load('token');
@@ -18,7 +18,7 @@ function Main() {
       setIsAuth(true);
       getPosts();
     }
-  }, []);  //reson of infinate loop
+  }, [refreshMain]);  //reson of infinate loop
 
   return (
     <>

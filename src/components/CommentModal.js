@@ -45,24 +45,24 @@ function CommentModal(props) {
         </Modal.Title>
       </Modal.Header>
       <div className='commentsContainer'>
-        {com.map((comment, index) => (
-          <div key={index} className='comments'>
-            <h5>{comment.user.username}</h5>
-            <p>
-              {comment.content}
-            </p>
-            <hr></hr>
-          </div>
-        ))}
+        {com.length === 0 ? <p>Add the first comment...</p> :
+          com.map((comment, index) => (
+            <div key={index} className='comments'>
+              <h5>{comment.user.username}</h5>
+              <p>
+                {comment.content}
+              </p>
+              <hr></hr>
+            </div>
+          ))
+        }
       </div>
-      <div>
+      <div className='commentForm'>
         <form onSubmit={addComment} className='commentForm'>
-          <input type='text' name='content' className='commentInput' placeholder='Add Comment..'></input>
+          <input type='text' name='content' className='commentInput' placeholder='Add Comment..' required></input>
           <input type='submit' value='Add' className='commentSubmit'></input>
         </form>
       </div>
-
-
     </Modal >
   )
 }

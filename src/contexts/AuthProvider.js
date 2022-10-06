@@ -70,17 +70,26 @@ function AuthProvider(props) {
   }
 
 
-  //tried to check without using useEffect but it doesnt work ! :(
-  // function checkToken() {
-  //   const token = cookies.load('token');
-  //   if (token) {
-  //     setIsAuth(true);
-  //   }
-  // }
+  function canDo() {
+    let userCapabilites = cookies.load('capabilities');
+    if (userCapabilites.includes('read')) {
+      return true;
+    } else if (userCapabilites.includes('add')) {
+      return true;
+    } else if (userCapabilites.includes('delete')) {
+      return true;
+    } else if (userCapabilites.includes('update')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 
 
-  const value = { showSignIn, setShowSignIn, isAuth, setIsAuth, err, setErr, signUp, signIn, logOut, goToSignUp };
+
+
+  const value = { showSignIn, setShowSignIn, isAuth, setIsAuth, err, setErr, signUp, signIn, logOut, goToSignUp, canDo };
   return (
     <authContext.Provider value={value}>
       {props.children}

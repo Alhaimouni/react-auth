@@ -11,6 +11,7 @@ function DataProvider(props) {
   const [posts, setPosts] = useState(() => []);
   const [comments, setComments] = useState(() => []);
   const [refresh, setRefresh] = useState(() => 0);
+  const [refreshMain, setRefreshMain] = useState(() => 0);
 
 
   function addPost(e) {
@@ -22,10 +23,12 @@ function DataProvider(props) {
     }
     const bearer = { headers: { authorization: `Bearer ${cookies.load('token')}` } };
     axios.post(url, post, bearer)
-      .then(resolve => console.log(resolve.data))
+      .then(resolve => {
+        e.target.title.value = '';
+        e.target.content.value = '';
+        setRefreshMain(r=>++r);
+      })
       .catch(reject => console.log(reject.response.data));
-    e.target.title.value = '';
-    e.target.content.value = '';
   }
 
   function getPosts() {
@@ -66,12 +69,15 @@ function DataProvider(props) {
     const url = (`${process.env.REACT_APP_SERVER}/post/${postId}`);
     const bearer = { headers: { authorization: `Bearer ${cookies.load('token')}` } };
     axios.delete(url, bearer)
-      .then(resolve => console.log('deleted'))
+      .then(resolve => setRefreshMain(r=>++r))
       .catch(reject => console.log(reject.response.data));
   }
 
   const value = {
-    posts, setPosts, comments, setComments, refresh, setRefresh,
+    posts, setPosts,
+    comments, setComments,
+    refresh, setRefresh,
+    refreshMain, setRefreshMain,
     addPost, getPosts, addComment, getComments, deletePost,
   };
   return (

@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+.footer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: rgb(255,255,255);
+  color: rgb(46, 52, 57);
+  border-top: 1px solid rgb(191,191,192);
+
+}
+
+a {
+  color: rgb(244,202,212);
+}
+
+.top {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 70%;
+  padding: 25px 12.5px;
+}
+
+.top a {
+  margin: 5px 0px;
+  text-decoration: none;
+
+}
+
+.logo {
+  height: 70%;
+  padding: 10px 10px;
+}
+
+.logo h3 {
+  font-size: x-large;
+}
+.contactUs {
+  height: 30%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 0px;
+
+}
+
+.contactUs a {
+  font-size: x-large;
+  margin: 0px 10px;
+  color: rgb(255, 132, 161);
+}
+
+.t1 {
+  width: 60%;
+  height: auto;
+  padding: 0px 0px 10px 200px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.t2 {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  width: 20%;
+  height: auto;
+  padding: 5px 5px;
+}
+
+.t3 {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  width: 20%;
+  height: auto;
+  padding: 5px 5px;
+}
+
+.bot {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+  padding: 20px 5px 10px 5px;
+}
+
+.bot p {
+  width: 100%;
+  text-align: center;
+}
+
+.topA {
+  color: rgb(255, 132, 161);
+}
+
+.topP {
+  font-size: large;
+  text-decoration: underline;
+  text-transform: capitalize;
+}

@@ -12,7 +12,7 @@ function RegisterHero() {
       </div>
       <div className='heroMid'>
         <h3>Welcome To Our  <span id='siteName'>  White-Board</span> </h3>
-        <p>Don't have an account <a href onClick={goToSignUp}>SignUp</a></p>
+        <p>Don't have an account <a  onClick={goToSignUp}>SignUp</a></p>
       </div>
       <div className='heroBot'>
       </div>

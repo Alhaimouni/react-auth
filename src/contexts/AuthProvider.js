@@ -30,6 +30,7 @@ function AuthProvider(props) {
         cookies.save('username', resolve.data.user.username);
         cookies.save('capabilities', resolve.data.user.capabilities);
         cookies.save('_id', resolve.data.user._id);
+        cookies.save('role', resolve.data.user.role);
         setIsAuth(true);
       })
       .catch(reject => {
@@ -68,16 +69,18 @@ function AuthProvider(props) {
     setIsAuth(false);
   }
 
-  function checkToken() {
-    const token = cookies.load('token');
-    if (token) {
-      setIsAuth(true);
-    }
-  }
+
+  //tried to check without using useEffect but it doesnt work ! :(
+  // function checkToken() {
+  //   const token = cookies.load('token');
+  //   if (token) {
+  //     setIsAuth(true);
+  //   }
+  // }
 
 
 
-  const value = { showSignIn, setShowSignIn, isAuth, setIsAuth, err, setErr, signUp, signIn, logOut, goToSignUp, checkToken };
+  const value = { showSignIn, setShowSignIn, isAuth, setIsAuth, err, setErr, signUp, signIn, logOut, goToSignUp };
   return (
     <authContext.Provider value={value}>
       {props.children}

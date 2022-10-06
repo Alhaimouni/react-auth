@@ -6,14 +6,18 @@ import RegisterHero from './RegisterHero';
 import { authContext } from '../contexts/AuthProvider';
 import { When } from 'react-if';
 import { Navigate } from 'react-router-dom';
-
+import cookies from 'react-cookies'
 
 function Register() {
 
-  const { showSignIn, isAuth, checkToken } = useContext(authContext);
+  const { showSignIn, isAuth, setIsAuth } = useContext(authContext);
 
-  checkToken();  //function to check the token to deni self /login router use 
-
+  useEffect(() => {
+    const token = cookies.load('token');
+    if (token) {
+      setIsAuth(true);
+    }
+  }, [])
 
   return (
     <>

@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.commentsContainer {
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 25px;
+}
+
+.commentInput {
+  width: 80%;
+  padding: 20px;
+  background-color: rgba(152, 203, 248, 0.437);
+}
+
+.commentSubmit {
+  width: 20%;
+  padding: 20px;
+  background-color: rgb(152, 203, 248);
+}

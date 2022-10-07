@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { dataContext } from '../contexts/DataProvider';
 import cookies from 'react-cookies';
@@ -7,28 +7,28 @@ import '../styles/UpdateModal.css';
 
 function UpdateModal(props) {
 
-  const { setRefresh } = useContext(dataContext);
+  const { setRefreshMain } = useContext(dataContext);
 
   function updatePost(e) {
     e.preventDefault();
-    console.log(props.post.id)
-    const url = (`${process.env.REACT_APP_SERVER}/post/${props.post.id}}`);
-    const updatedPost = {
-      title: e.target.title.value,
-      content: e.target.content.value,
-      userId: props.post.userId,
-    }
+    const url = `${process.env.REACT_APP_SERVER}/post/${props.post.id}`;
     const bearer = { headers: { authorization: `Bearer ${cookies.load('token')}` } };
-    axios.put(url, updatedPost, bearer)
+    const updatedData = {
+      "title": e.target.title.value,
+      "content": e.target.content.value,
+      "userId": props.post.userId,
+    }
+    axios.put(url, updatedData, bearer)
       .then((resolve) => {
-        e.target.Title.value = '';
+        e.target.title.value = '';
         e.target.content.value = '';
-        setRefresh(pre => ++pre);
+        setRefreshMain(pre => ++pre);
+        props.onHide();
       })
-      .catch(reject => console.log(reject.response.data));
-
+      .catch(reject => { console.log(reject) });
 
   }
+
 
   return (
     <Modal

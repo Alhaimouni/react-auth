@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import '../styles/PostHolder.css';
 import CommentModal from './CommentModal';
@@ -14,6 +14,7 @@ function PostHolder({ post }) {
   const { canDo } = useContext(authContext);
   const [modalShow, setModalShow] = useState(false);
   const [updateModalShow, setUpdateModalShow] = useState(false);
+
   return (
     <>
       <div className='PostHolder'>

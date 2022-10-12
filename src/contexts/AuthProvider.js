@@ -1,7 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import base64 from 'base-64';
 import cookies from 'react-cookies';
+import { authReducer, initState } from '../reducers/authReducer';
+import { actions } from '../reducers/actionTypes';
 
 
 export const authContext = React.createContext();
@@ -10,15 +12,39 @@ export const authContext = React.createContext();
 
 function AuthProvider(props) {
 
-  const [showSignIn, setShowSignIn] = useState(() => true);
-  const [isAuth, setIsAuth] = useState(() => false);
-  const [err, setErr] = useState(() => '');
+
+  const [authStates, dispatch] = useReducer(authReducer, initState);
+
+
+
+
 
   function goToSignUp() {
-    setErr('');
-    setShowSignIn(false);
+    dispatch({ type: actions.SHOW_SIGNUP });
   }
 
+  function signUp(e) {
+    e.preventDefault();
+    const userData = {
+      username: e.target.username.value,
+      email: e.target.email.value,
+      password: e.target.confirmPassword.value,
+    }
+    if (e.target.confirmPassword.value === e.target.password.value) {
+      const url = `${process.env.REACT_APP_SERVER}/signup`
+      axios.post(url, userData)
+        .then(resolve => {
+          dispatch({ type: actions.SIGNUP_SUCCESS });
+        })
+        .catch(reject => {
+          dispatch({ type: actions.SIGNUP_FAIL, payload: reject.response.data });
+        })
+    } else {
+      dispatch({ type: actions.SIGNUP_FAIL, payload: `Password Must Match` });
+    }
+  }
+
+  const [isAuth, setIsAuth] = useState(() => false);
   function signIn(e) {
     e.preventDefault();
     const encodedUserData = base64.encode(`${e.target.username.value}:${e.target.password.value}`);
@@ -35,30 +61,8 @@ function AuthProvider(props) {
       })
       .catch(reject => {
         console.log(reject, 'inside signin reject');
-        setErr(reject.response.data);
+        dispatch({ type: actions.SIGNUP_FAIL, payload: reject.response.data });
       })
-  }
-
-  function signUp(e) {
-    e.preventDefault();
-    const userData = {
-      username: e.target.username.value,
-      email: e.target.email.value,
-      password: e.target.confirmPassword.value,
-    }
-    if (e.target.confirmPassword.value === e.target.password.value) {
-      const url = `${process.env.REACT_APP_SERVER}/signup`
-      axios.post(url, userData)
-        .then(resolve => {
-          setShowSignIn(true);
-          setErr('');
-        })
-        .catch(reject => {
-          setErr(reject.response.data);
-        })
-    } else {
-      setErr(`Password Must Match`);
-    }
   }
 
   function logOut() {
@@ -68,7 +72,6 @@ function AuthProvider(props) {
     cookies.remove('_id');
     setIsAuth(false);
   }
-
 
   function canDo() {
     let userCapabilites = cookies.load('capabilities');
@@ -89,7 +92,7 @@ function AuthProvider(props) {
 
 
 
-  const value = { showSignIn, setShowSignIn, isAuth, setIsAuth, err, setErr, signUp, signIn, logOut, goToSignUp, canDo };
+  const value = { isAuth, setIsAuth, signUp, signIn, logOut, goToSignUp, canDo, authStates };
   return (
     <authContext.Provider value={value}>
       {props.children}

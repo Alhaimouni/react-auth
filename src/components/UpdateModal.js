@@ -6,9 +6,7 @@ import axios from 'axios';
 import '../styles/UpdateModal.css';
 
 function UpdateModal(props) {
-
   const { setRefreshMain } = useContext(dataContext);
-
   function updatePost(e) {
     e.preventDefault();
     const url = `${process.env.REACT_APP_SERVER}/post/${props.post.id}`;
@@ -26,10 +24,7 @@ function UpdateModal(props) {
         props.onHide();
       })
       .catch(reject => { console.log(reject) });
-
   }
-
-
   return (
     <Modal
       {...props}

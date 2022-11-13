@@ -14,7 +14,6 @@ function PostHolder({ post }) {
   const { canDo } = useContext(authContext);
   const [modalShow, setModalShow] = useState(false);
   const [updateModalShow, setUpdateModalShow] = useState(false);
-
   return (
     <>
       <div className='PostHolder'>

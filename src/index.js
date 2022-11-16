@@ -7,6 +7,7 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { them } from "./theme/index";
 
 const colors = {
   brand: {

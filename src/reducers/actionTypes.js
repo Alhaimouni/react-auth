@@ -6,3 +6,12 @@ export const actions = {
   DELETE_TASK: 'DELETE_TASK',
   SHOW_SIGNUP: 'SHOW_SIGNUP',
 }
+
+export const postAction = {
+  addPost: 'add_post',
+  editpost: 'edit_post',
+  deletePost: 'delete_post',
+  addComment: 'add_comment',
+  editComment: 'edit_comment',
+  deleteComment: 'delete_comment',
+}

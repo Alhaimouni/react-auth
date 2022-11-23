@@ -5,6 +5,7 @@ import { actions } from '../reducers/configs'
 
 export const allCombinedReducers = combineReducers({ dataReducer, authReducer });
 
+
 export default function store() {
   return createStore(allCombinedReducers);
 };

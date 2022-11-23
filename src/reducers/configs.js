@@ -15,3 +15,4 @@ export const postAction = {
   editComment: 'edit_comment',
   deleteComment: 'delete_comment',
 }
+
